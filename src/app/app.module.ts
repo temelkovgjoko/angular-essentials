@@ -1,15 +1,25 @@
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppComponent } from './app.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
-import { UserComponent } from './user.component';
+import { AppComponent } from "./app.component";
+import { ItemComponent } from "./item/item.component";
+import { ListComponent } from "./list/list.component";
+import { TabsComponent } from "./tabs/tabs.component";
+import { StarWarsService } from "./star-wars.service";
+import { LogService } from "./log.service";
+import { CreateCharacterComponent } from "./create-character/create-character.component";
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, UserDetailComponent],
-  imports: [BrowserModule, FormsModule],
-  providers: [],
+  declarations: [
+    AppComponent,
+    TabsComponent,
+    ListComponent,
+    ItemComponent,
+    CreateCharacterComponent
+  ],
+  imports: [BrowserModule, FormsModule, FormsModule],
+  providers: [StarWarsService, LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
