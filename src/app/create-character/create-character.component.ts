@@ -13,7 +13,7 @@ export class CreateCharacterComponent implements OnInit {
     { display: "Dark", value: "dark" }
   ];
   constructor(private swService: StarWarsService) {}
-
+  defaultName= 'Obi Wan'
   ngOnInit() {}
 
   onSubmit(submittedForm) {
