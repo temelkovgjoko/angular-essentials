@@ -14,7 +14,8 @@ export class CreateCharacterComponent implements OnInit {
   ];
   constructor(private swService: StarWarsService) {}
   defaultName= 'Obi Wan'
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   onSubmit(submittedForm) {
     if (submittedForm.invalid) {

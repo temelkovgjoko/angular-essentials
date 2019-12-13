@@ -1,14 +1,30 @@
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
+import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
+import { CreateCharacterComponent } from "./create-character/create-character.component";
+import { HeaderComponent } from "./header/header.component";
 import { ItemComponent } from "./item/item.component";
 import { ListComponent } from "./list/list.component";
-import { TabsComponent } from "./tabs/tabs.component";
-import { StarWarsService } from "./star-wars.service";
 import { LogService } from "./log.service";
-import { CreateCharacterComponent } from "./create-character/create-character.component";
+import { StarWarsService } from "./star-wars.service";
+import { TabsComponent } from "./tabs/tabs.component";
+import { HttpClientModule } from "@angular/common/http";
+
+const routes = [
+  {
+    path: "characters",
+    component: TabsComponent,
+    children: [
+      { path: "", redirectTo: "all", pathMatch: "full" },
+      { path: ":side", component: ListComponent }
+    ]
+  },
+  { path: "new-character", component: CreateCharacterComponent },
+  { path: "**", redirectTo: "/characters" }
+];
 
 @NgModule({
   declarations: [
@@ -16,9 +32,15 @@ import { CreateCharacterComponent } from "./create-character/create-character.co
     TabsComponent,
     ListComponent,
     ItemComponent,
-    CreateCharacterComponent
+    CreateCharacterComponent,
+    HeaderComponent
   ],
-  imports: [BrowserModule, FormsModule, FormsModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule
+  ],
   providers: [StarWarsService, LogService],
   bootstrap: [AppComponent]
 })
